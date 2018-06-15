@@ -1,8 +1,11 @@
-<h2>{{ hero.name }} Details</h2>
-<div><span>id: </span>{{hero.id}}</div>
-<div><span>name: </span>{{hero.name}}</div>
+<h2>My Heroes</h2>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let hero of heroes" (click)="onSelect(hero)">
+    <span class="rounded-left p-2 bg-success text-light">{{hero.id}}</span> <span class="rounded-right bg-light">{{hero.name}}</span>
+  </li>
+</ul>
 
-<div>
+<!--<div>
   <button [disabled]="isSpecial">propery binding button</button>
 </div>
 
@@ -16,10 +19,16 @@
 
 <div>
   <button (click)="onSave($event)">event binding save button</button>
-</div>
+</div>-->
 
-<div>
-  <label>name:
-    <input [(ngModel)]="hero.name" placeholder="name">
-  </label>
+<div *ngIf="selectedHero">
+
+  <h2>{{ selectedHero.name | uppercase }} Details</h2>
+  <div><span>id: </span>{{selectedHero.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedHero.name" placeholder="name">
+    </label>
+  </div>
+
 </div>
