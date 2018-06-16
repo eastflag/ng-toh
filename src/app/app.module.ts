@@ -8,6 +8,15 @@ import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { VoterComponent } from './voter/voter.component';
 import { VotetakerComponent } from './votetaker/votetaker.component';
+import { TodoComponent } from './todo/todo.component';
+import {RouterModule, Routes} from '@angular/router';
+import { HomeComponent } from './home/home.component';
+
+const routes: Routes = [
+  {path: '', component: HomeComponent},
+  {path: 'heroes', component: HeroesComponent},
+  {path: 'todo', component: TodoComponent}
+];
 
 @NgModule({
   declarations: [
@@ -15,12 +24,15 @@ import { VotetakerComponent } from './votetaker/votetaker.component';
     HeroesComponent,
     HeroDetailComponent,
     VoterComponent,
-    VotetakerComponent
+    VotetakerComponent,
+    TodoComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    NgbModalModule.forRoot()
+    NgbModalModule.forRoot(),
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
