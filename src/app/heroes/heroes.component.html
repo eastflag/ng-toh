@@ -1,7 +1,8 @@
 <h2>My Heroes</h2>
-<ul class="list-group">
-  <li class="list-group-item" *ngFor="let hero of heroes" (click)="onSelect(hero)">
-    <span class="rounded-left p-2 bg-success text-light">{{hero.id}}</span> <span class="rounded-right bg-light">{{hero.name}}</span>
+<ul>
+  <li class="d-flex m-1" *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero===selectedHero">
+    <span class="rounded-left p-2 bg-primary text-light">{{hero.id}}</span>
+    <div class="rounded-right p-2 bg-light text-dark w-50">{{hero.name}}</div>
   </li>
 </ul>
 
