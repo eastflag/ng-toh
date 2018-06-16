@@ -6,12 +6,16 @@ import { HeroesComponent } from './heroes/heroes.component';
 import {FormsModule} from '@angular/forms';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { VoterComponent } from './voter/voter.component';
+import { VotetakerComponent } from './votetaker/votetaker.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
-    HeroDetailComponent
+    HeroDetailComponent,
+    VoterComponent,
+    VotetakerComponent
   ],
   imports: [
     BrowserModule,
