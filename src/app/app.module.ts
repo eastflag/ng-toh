@@ -14,9 +14,10 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'heroes', component: HeroesComponent},
-  {path: 'todo', component: TodoComponent},
-  {path: 'detail/:hero_id', component: HeroDetailComponent}
+  {path: 'heroes', component: HeroesComponent, children: [
+      {path: 'detail/:hero_id', component: HeroDetailComponent}
+    ]},
+  {path: 'todo', component: TodoComponent}
 ];
 
 @NgModule({
