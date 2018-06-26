@@ -10,7 +10,7 @@ import {HeroService} from '../hero.service';
 })
 export class HeroesComponent implements OnInit {
   hero: Hero = {
-    id: 1,
+    hero_id: 1,
     name: 'Windstorm'
   };
 
@@ -24,7 +24,10 @@ export class HeroesComponent implements OnInit {
 
   ngOnInit() {
     this.heroService.getHeroes()
-      .subscribe(data => this.heroes = data);
+      .subscribe(data => {
+        this.heroes = data;
+        console.log(this.heroes);
+      });
   }
 
   onSave(event: any) {

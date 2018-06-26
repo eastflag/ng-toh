@@ -11,6 +11,7 @@ import { VotetakerComponent } from './votetaker/votetaker.component';
 import { TodoComponent } from './todo/todo.component';
 import {RouterModule, Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import {HttpClientModule} from '@angular/common/http';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -34,7 +35,8 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     NgbModalModule.forRoot(),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
