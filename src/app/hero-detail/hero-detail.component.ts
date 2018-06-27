@@ -12,6 +12,12 @@ export class HeroDetailComponent implements OnInit {
 
   // @Input()
   selectedHero: Hero;
+  powers = {
+    flying: false,
+    penetration: false,
+    hacking: false,
+    strength: false
+  };
 
   constructor(private route: ActivatedRoute, private heroService: HeroService) {
     this.route.params
@@ -23,7 +29,16 @@ export class HeroDetailComponent implements OnInit {
 
   getHero(id: number) {
     this.heroService.getHero(id)
-      .subscribe(hero => this.selectedHero = hero);
+      .subscribe(hero => {
+        this.selectedHero = hero;
+        let powerList: string[] = this.selectedHero.power.split(',');
+        let powerObject = {};
+        powerList.forEach(item => powerObject[item] = true);
+        console.log(powerList, powerObject);
+
+        Object.assign(this.powers, powerObject);
+        console.log(this.powers);
+      });
   }
 
   ngOnInit() {
