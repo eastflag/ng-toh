@@ -12,13 +12,16 @@ import { TodoComponent } from './todo/todo.component';
 import {RouterModule, Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import {HttpClientModule} from '@angular/common/http';
+import {NguCarouselModule} from '@ngu/carousel';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'heroes', component: HeroesComponent, children: [
       {path: 'detail/:hero_id', component: HeroDetailComponent}
     ]},
-  {path: 'todo', component: TodoComponent}
+  {
+    path: 'admin', loadChildren: './admin/admin.module#AdminModule',
+  },
 ];
 
 @NgModule({
@@ -29,7 +32,7 @@ const routes: Routes = [
     VoterComponent,
     VotetakerComponent,
     TodoComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,7 @@ const routes: Routes = [
     NgbModalModule.forRoot(),
     RouterModule.forRoot(routes),
     HttpClientModule,
+    NguCarouselModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
