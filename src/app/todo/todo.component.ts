@@ -66,6 +66,12 @@ export class TodoComponent implements OnInit {
   }
 
   modify(item: TodoVo) {
-
+    this.heroService.modifyTodo(item)
+      .subscribe(body => {
+        // 기존 객체에 새로온 객체의 퍼라퍼티를 복사한다.
+        Object.assign(item, body);
+        // 편집상태에서 일반상태로 전환
+        item.isEdited = false;
+      });
   }
 }
