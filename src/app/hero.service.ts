@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Hero} from './hero';
 import {Observable, of} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../environments/environment';
-import {TodoComponent} from './todo/todo.component';
 import {TodoVo} from './domain/todo.vo';
 
 @Injectable({
@@ -25,4 +24,9 @@ export class HeroService {
     return this.http.get<TodoVo[]>(environment.HOST + '/api/todo');
   }
 
+  addTodo(todo: TodoVo): Observable<TodoVo> {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post<TodoVo>(environment.HOST + '/api/todo', todo, {headers: headers});
+  }
 }

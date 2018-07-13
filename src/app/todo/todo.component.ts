@@ -9,6 +9,8 @@ import {HeroService} from '../hero.service';
 })
 export class TodoComponent implements OnInit {
   todoList: TodoVo[];
+  newTodo = new TodoVo();
+
 
   constructor(private heroService: HeroService) { }
 
@@ -21,6 +23,14 @@ export class TodoComponent implements OnInit {
       .subscribe(body => {
         console.log('getTodoList', body);
         this.todoList = body;
+      });
+  }
+
+  addTodo() {
+    this.heroService.addTodo(this.newTodo)
+      .subscribe(body => {
+        console.log(body);
+        this.todoList.unshift(body);
       });
   }
 }

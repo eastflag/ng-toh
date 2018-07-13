@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-sm-8">
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="할일을 입력하세요.">
+      <input type="text" class="form-control" placeholder="할일을 입력하세요." [(ngModel)]="newTodo.todo">
     </div>
   </div>
   <div class="col-sm-4">
-    <button class="btn btn-primary btn-block">추가</button>
+    <button class="btn btn-primary btn-block" (click)="addTodo()">추가</button>
   </div>
 </div>
 
