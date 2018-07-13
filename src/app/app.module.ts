@@ -12,7 +12,6 @@ import { TodoComponent } from './todo/todo.component';
 import {RouterModule, Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import {HttpClientModule} from '@angular/common/http';
-import {NguCarouselModule} from '@ngu/carousel';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -41,7 +40,6 @@ const routes: Routes = [
     NgbModalModule.forRoot(),
     RouterModule.forRoot(routes),
     HttpClientModule,
-    NguCarouselModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
