@@ -19,6 +19,7 @@ const routes: Routes = [
   {path: 'heroes', component: HeroesComponent, children: [
       {path: 'detail/:hero_id', component: HeroDetailComponent}
     ]},
+  {path: 'todo', component: TodoComponent},
   {
     path: 'admin', loadChildren: './admin/admin.module#AdminModule',
   },
