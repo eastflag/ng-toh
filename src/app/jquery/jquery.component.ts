@@ -51,4 +51,21 @@ export class JqueryComponent implements OnInit {
       $('#todo_list').append(todo);
     });
   }
+
+  add_todo() {
+    $.ajax({
+      url: 'http://www.javabrain.kr:8080/api/todo',
+      method: 'POST',
+      data: JSON.stringify({todo: $('#input_todo').val(), isFinished: false}),
+      contentType: 'application/json',
+      dataType: 'json',
+      // success: function(data) {
+      //   console.log(data);
+      // }
+      success: data => {
+        this.todoList.unshift(data);
+        this.refresh();
+      }
+    });
+  }
 }

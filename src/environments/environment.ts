@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  HOST: 'http://localhost:8080',
+  HOST: 'http://eastflag.co.kr:8080',
 };
 
 /*
