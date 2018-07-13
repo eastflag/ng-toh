@@ -12,12 +12,14 @@ import { TodoComponent } from './todo/todo.component';
 import {RouterModule, Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import {HttpClientModule} from '@angular/common/http';
+import { JqueryComponent } from './jquery/jquery.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'heroes', component: HeroesComponent, children: [
       {path: 'detail/:hero_id', component: HeroDetailComponent}
     ]},
+  {path: 'jquery', component: JqueryComponent},
   {path: 'todo', component: TodoComponent},
   {
     path: 'admin', loadChildren: './admin/admin.module#AdminModule',
@@ -33,6 +35,7 @@ const routes: Routes = [
     VotetakerComponent,
     TodoComponent,
     HomeComponent,
+    JqueryComponent,
   ],
   imports: [
     BrowserModule,
