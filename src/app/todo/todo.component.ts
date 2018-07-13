@@ -62,7 +62,18 @@ export class TodoComponent implements OnInit {
   }
 
   remove(item: TodoVo) {
-
+    const result = confirm(item.todo + '을(를) 삭제하시겠습니까?');
+    if (result) {
+      this.heroService.removeTodo(item.todo_id)
+        .subscribe(body => {
+          if (body.result === 0) {
+            let index = this.todoList.findIndex(data => {
+              return item.todo_id === data.todo_id ? true : false;
+            });
+            this.todoList.splice(index, 1);
+          }
+        });
+    }
   }
 
   modify(item: TodoVo) {
