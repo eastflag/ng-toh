@@ -9,28 +9,26 @@
   </div>
 </div>
 
-<div class="row">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>완료</th>
-        <th>todo</th>
-        <th>생성일</th>
-        <th>수정일</th>
-        <th>삭제</th>
-      </tr>
-    </thead>
-    <tbody>
+<table class="table table-striped">
+  <thead>
     <tr>
-      <td>완료</td>
-      <td>빨래하기</td>
-      <td>2018-06-01</td>
-      <td>2018-06-01</td>
-      <td>
-        <button class="btn btn-success btn-sm">수정</button>
-        <button class="btn btn-danger" btn-sm>삭제</button>
-      </td>
+      <th>완료</th>
+      <th>todo</th>
+      <th>생성일</th>
+      <th>수정일</th>
+      <th>삭제</th>
     </tr>
-    </tbody>
-  </table>
-</div>
+  </thead>
+  <tbody>
+  <tr *ngFor="let todo of todoList">
+    <td>{{todo.isFinished ? '완료' : '미완료'}}</td>
+    <td>{{todo.todo}}</td>
+    <td>{{todo.created}}</td>
+    <td>{{todo.updated}}</td>
+    <td>
+      <button class="btn btn-success btn-sm">수정</button>
+      <button class="btn btn-danger btn-sm ml-1">삭제</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
