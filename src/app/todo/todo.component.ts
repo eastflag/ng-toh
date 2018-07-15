@@ -31,6 +31,8 @@ export class TodoComponent implements OnInit {
       .subscribe(body => {
         console.log(body);
         this.todoList.unshift(body);
+        // clear input
+        this.newTodo.todo = null;
       });
   }
 

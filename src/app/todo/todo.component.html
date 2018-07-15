@@ -1,4 +1,4 @@
-<form #myForm="ngForm" (ngSubmit)="addTodo()" ngNativeValidate>
+<form #myForm="ngForm" (ngSubmit)="addTodo()">
   <div class="row">
     <div class="col-sm-8">
       <div class="form-group">
@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="col-sm-4">
-      <button type="submit" class="btn btn-primary btn-block">추가</button>
+      <button class="btn btn-primary btn-block" [disabled]="!myForm.form.valid">추가</button>
     </div>
   </div>
 </form>
