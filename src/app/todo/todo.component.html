@@ -1,13 +1,16 @@
-<div class="row">
-  <div class="col-sm-8">
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="할일을 입력하세요." [(ngModel)]="newTodo.todo">
+<form #myForm="ngForm" (ngSubmit)="addTodo()" ngNativeValidate>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="할일을 입력하세요." [(ngModel)]="newTodo.todo"
+               name="todo" #name="ngModel" required>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <button type="submit" class="btn btn-primary btn-block">추가</button>
     </div>
   </div>
-  <div class="col-sm-4">
-    <button class="btn btn-primary btn-block" (click)="addTodo()">추가</button>
-  </div>
-</div>
+</form>
 
 <table class="table table-striped">
   <thead>

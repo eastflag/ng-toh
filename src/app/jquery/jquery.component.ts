@@ -38,14 +38,13 @@ export class JqueryComponent implements OnInit {
       let todo =
         '<tr>' +
         '<td>' +
-        '<input type="checkbox" ' + (item.isFinished ? 'checked' : '') + ' value="' + item.isFinished + '" ' +
-        'onchange="update(' + index + ')">' +
+          (item.isFinished ? '완료' : '미완료') +
         '</td>' +
-        (item.isFinished ? '<td style="text-decoration: line-through">' : '<td>') + item.todo + '</td>' +
+          (item.isFinished ? '<td style="text-decoration: line-through">' : '<td>') + item.todo + '</td>' +
         '<td>' + item.created + '</td>' +
         '<td>' + item.updated + '</td>' +
         '<td>' +
-        '<button type="button" onclick="remove(' + index + ')">삭제</button>' +
+        '<button type="button">삭제</button>' +
         '</td>' +
         '</tr>';
       $('#todo_list').append(todo);
@@ -64,7 +63,24 @@ export class JqueryComponent implements OnInit {
       // }
       success: data => {
         this.todoList.unshift(data);
-        this.refresh();
+
+        // 뷰 생성
+        let todo =
+          '<tr>' +
+          '<td>' +
+          (data.isFinished ? '완료' : '미완료') +
+          '</td>' +
+          (data.isFinished ? '<td style="text-decoration: line-through">' : '<td>') + data.todo + '</td>' +
+          '<td>' + data.created + '</td>' +
+          '<td>' + data.updated + '</td>' +
+          '<td>' +
+          '<button type="button">삭제</button>' +
+          '</td>' +
+          '</tr>';
+        $('#todo_list').prepend(todo);
+
+        // input clear
+        $('#input_todo').val('');
       }
     });
   }
