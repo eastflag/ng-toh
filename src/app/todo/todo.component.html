@@ -3,11 +3,14 @@
     <div class="col-sm-8">
       <div class="form-group">
         <input type="text" class="form-control" placeholder="할일을 입력하세요." [(ngModel)]="newTodo.todo"
-               name="todo" #name="ngModel" required>
+               name="todo" #todo="ngModel" required>
+        <div [hidden]="todo.valid" class="alert alert-danger">
+          todo is required
+        </div>
       </div>
     </div>
     <div class="col-sm-4">
-      <button class="btn btn-primary btn-block" [disabled]="!myForm.form.valid">추가</button>
+      <button type="submit" class="btn btn-primary btn-block" [disabled]="!myForm.form.valid">추가</button>
     </div>
   </div>
 </form>
