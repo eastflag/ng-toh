@@ -27,7 +27,7 @@
   </thead>
   <tbody>
   <ng-template ngFor let-item [ngForOf]="todoList">
-    <tr *ngIf="!item.isEdited">
+    <tr *ngIf="!item.isEdited" appHighlight [highlightColor]="'#C8FFFF'">
       <td>{{item.isFinished ? '완료' : '미완료'}}</td>
       <td>{{item.todo}}</td>
       <td>{{item.created | mydate : 'aaa'}}</td>
