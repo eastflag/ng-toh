@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Hero} from './hero';
-import {Observable, of} from 'rxjs';
+import {Observable, of, Subject} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../environments/environment';
 import {TodoVo} from './domain/todo.vo';
@@ -11,6 +11,9 @@ import {ResultVo} from './domain/result.vo';
 })
 export class HeroService {
   headers = new HttpHeaders();
+
+  refresh = new Subject<number>(); // publisher: next() 함수로 데이터 발생
+  refresh$ = this.refresh.asObservable(); // subscriber: subscribe()로 데이터 수신
 
   constructor(private http: HttpClient) {
     this.headers.append('Content-Type', 'application/json');

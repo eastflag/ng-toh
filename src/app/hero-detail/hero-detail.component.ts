@@ -24,6 +24,8 @@ export class HeroDetailComponent implements OnInit {
       .subscribe(params => {
         console.log(params);
         this.getHero(+params['hero_id']);
+        // 변경된 데이터를 부모에게 전달
+        this.heroService.refresh.next(+params['hero_id']);
       });
   }
 
