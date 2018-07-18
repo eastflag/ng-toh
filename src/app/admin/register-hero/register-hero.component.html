@@ -1,3 +1,59 @@
-<p>
-  register-hero works!
-</p>
+
+<h3>Hero Registration</h3>
+
+<form [formGroup]="form" (ngSubmit)="register()" novalidate>
+  <div class="form-group mt-1">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" placeholder="Enter Name" id="name" formControlName="name">
+  </div>
+
+  <div class="form-group mt-1">
+    <label for="email">Email Address</label>
+    <input type="email" class="form-control" placeholder="Enter Email" id="email" formControlName="email">
+  </div>
+
+  <div class="d-flex flex-column mt-1">
+    <div>성별</div>
+    <div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="sex" value="male" id="male" formControlName="sex">
+        <label class="form-check-label" for="male">남자</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="sex" value="female" id="female" formControlName="sex">
+        <label class="form-check-label" for="female">여자</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group mt-1">
+    <label for="country">country</label>
+    <select class="form-control" id="country" formControlName="country">
+      <option value="Japan">Japan</option>
+      <option value="American">American</option>
+      <option value="Korean">Korean</option>
+    </select>
+  </div>
+
+  <div class="form-group mt-1">
+    <label for="email">Address</label>
+    <textarea class="form-control" placeholder="Enter address" id="address" rows="3" formControlName="address"></textarea>
+  </div>
+
+  <div class="d-flex flex-column mt-1">
+    <div>power</div>
+    <div>
+      <div class="form-check" *ngFor="let p of powers; let i = index" formArrayName="power">
+        <input type="checkbox" class="form-check-input" [formControlName]="i">
+        <label class="form-check-label">{{p}}</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="m-3 d-flex justify-content-center">
+    <button type="submit" class="btn btn-outline-primary">등록</button>
+  </div>
+
+</form>
+
+<p>{{form.value | json}}</p>
