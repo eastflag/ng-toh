@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {CustomValidators} from 'ng2-validation';
 
 @Component({
   selector: 'app-register-hero',
