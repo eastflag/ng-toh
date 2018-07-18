@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ToasterConfig} from 'angular2-toaster';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  public config: ToasterConfig =
+    new ToasterConfig({
+      showCloseButton: true,
+      tapToDismiss: false,
+      timeout: 2000
+    });
 }

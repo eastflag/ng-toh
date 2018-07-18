@@ -6,6 +6,8 @@ import {RouterModule, Routes} from '@angular/router';
 import { RegisterHeroComponent } from './register-hero/register-hero.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {AdminService} from './admin.service';
 
 const routes: Routes = [
   {path: '', component: IndexComponent, children: [
@@ -18,9 +20,11 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [IndexComponent, ManageHeroComponent, RegisterHeroComponent, DashboardComponent]
+  declarations: [IndexComponent, ManageHeroComponent, RegisterHeroComponent, DashboardComponent],
+  providers: [AdminService]
 })
 export class AdminModule { }
