@@ -17,7 +17,7 @@ export class RegisterHeroComponent implements OnInit {
       sex: null,
       country: [null, Validators.compose([Validators.required])],
       address: [null, Validators.compose([Validators.required])],
-      power: this.fb.array(this.powers.map(x => console.log(x)))
+      power: this.fb.array(this.powers.map(x => !1))
     });
   }
 
