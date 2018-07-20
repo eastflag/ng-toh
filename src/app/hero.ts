@@ -6,6 +6,7 @@ export class Hero {
   country: string;
   address: string;
   power: string;
+  photo: string;
   created: string;
   updated: string;
 }

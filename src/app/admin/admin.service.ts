@@ -16,4 +16,12 @@ export class AdminService {
   addHero(hero: Hero): Observable<ResultVo> {
     return this.http.post<ResultVo>(`${environment.HOST}/api/hero`, hero, {headers: this.headers});
   }
+
+  imageUpload(formData: FormData): Observable<ResultVo> {
+    let headers = new HttpHeaders();
+    // headers.append('Content-Type', 'multipart/form-data'); //브라우저가 자동 생성함.
+    headers.append('Accept', 'application/json');
+
+    return this.http.post<ResultVo>(`${environment.HOST}/api/file`, formData, {headers: headers});
+  }
 }

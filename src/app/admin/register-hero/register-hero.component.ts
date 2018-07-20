@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AdminService} from '../admin.service';
 import {ToasterService} from 'angular2-toaster';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-register-hero',
@@ -19,7 +20,8 @@ export class RegisterHeroComponent implements OnInit {
       sex: [null, Validators.required],
       country: [null, Validators.required],
       address: null,
-      power: this.fb.array(this.powers.map(x => !1))
+      power: this.fb.array(this.powers.map(x => !1)),
+      photo: null
     });
   }
 
@@ -55,5 +57,25 @@ export class RegisterHeroComponent implements OnInit {
         // form 초기화
         this.form.reset({});
       });
+  }
+
+  fileUpload(event: any) {
+    console.log(event);
+
+    const reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = () => {
+      const formData = new FormData();
+      formData.append('file', event.target.files[0], event.target.files[0].name);
+      this.adminService.imageUpload(formData)
+        .subscribe(body => {
+          console.log(body);
+          let image = body['value'];
+          if (!environment.production) {
+            image = 'http://www.javabrain.kr:3030' + image;
+          }
+          this.form.controls['photo'].setValue(image);
+        });
+    };
   }
 }
