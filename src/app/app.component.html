@@ -12,8 +12,11 @@
       <li class="nav-item"  routerLinkActive="active">
         <a class="nav-link" href routerLink="/heroes">heroes</a>
       </li>
-      <li class="nav-item"  routerLinkActive="active">
+      <li class="nav-item"  routerLinkActive="active" *ngIf="!authService.isLogIn()">
         <a class="nav-link" href routerLink="/login">login</a>
+      </li>
+      <li class="nav-item"  routerLinkActive="active" *ngIf="authService.isLogIn()">
+        <a class="nav-link" href (click)="authService.logout()">logout</a>
       </li>
     </ul>
   </nav>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {ToasterConfig} from 'angular2-toaster';
+import {AuthGuardService} from './auth-guard.service';
 
 @Component({
   selector: 'app-root',
@@ -15,4 +16,6 @@ export class AppComponent {
       tapToDismiss: false,
       timeout: 2000
     });
+
+  constructor(public authService: AuthGuardService) {}
 }
