@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import {FormsModule} from '@angular/forms';
-import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { VoterComponent } from './voter/voter.component';
 import { VotetakerComponent } from './votetaker/votetaker.component';
@@ -17,6 +17,7 @@ import { MydatePipe } from './mydate.pipe';
 import { HighlightDirective } from './highlight.directive';
 import {ToasterModule} from 'angular2-toaster';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ManageDialogComponent } from './admin/manage-hero/manage-dialog.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -47,7 +48,7 @@ const routes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    NgbModalModule.forRoot(),
+    NgbModule.forRoot(),
     RouterModule.forRoot(routes),
     HttpClientModule,
     ToasterModule.forRoot()
