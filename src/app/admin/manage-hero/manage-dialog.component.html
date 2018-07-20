@@ -1,6 +1,6 @@
 <div class="modal-header">
   <h4 class="modal-title">Hi there!</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss(false)">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
@@ -8,6 +8,6 @@
   <p>{{name}}을(를) 삭제하시겠습니까?</p>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-success" (click)="activeModal.close('Close click')">확인</button>
-  <button type="button" class="btn btn-warning" (click)="activeModal.close('Close click')">취소</button>
+  <button type="button" class="btn btn-success" (click)="activeModal.close(true)">확인</button>
+  <button type="button" class="btn btn-warning" (click)="activeModal.close(false)">취소</button>
 </div>

@@ -24,4 +24,8 @@ export class AdminService {
 
     return this.http.post<ResultVo>(`${environment.HOST}/api/file`, formData, {headers: headers});
   }
+
+  removeHero(hero_id: number): Observable<ResultVo> {
+    return this.http.delete<ResultVo>(`${environment.HOST}/api/hero?hero_id=${hero_id}`);
+  }
 }
