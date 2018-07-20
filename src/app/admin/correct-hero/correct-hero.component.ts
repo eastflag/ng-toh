@@ -54,7 +54,7 @@ export class CorrectHeroComponent implements OnInit {
   }
 
   modify() {
-    console.log('register');
+    console.log('modify');
     if (!this.form.valid) {
       // to validate all form fields
       Object.keys(this.form.controls).forEach(key => {
@@ -75,12 +75,12 @@ export class CorrectHeroComponent implements OnInit {
 
     console.log(sendForm);
 
-    this.adminService.addHero(sendForm)
+    this.adminService.modifyHero(sendForm)
       .subscribe(body => {
         console.log(body);
-        this.toaster.pop('success', 'success', '등록되었습니다!');
+        this.toaster.pop('success', 'success', '수정되었습니다!');
         // form 초기화
-        this.form.reset({});
+        // this.form.reset({});
       });
   }
 
