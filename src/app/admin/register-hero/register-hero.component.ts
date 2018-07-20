@@ -72,7 +72,7 @@ export class RegisterHeroComponent implements OnInit {
           console.log(body);
           let image = body['value'];
           if (!environment.production) {
-            image = 'http://www.javabrain.kr:3030' + image;
+            image = 'http://www.javabrain.kr:3000' + image;
           }
           this.form.controls['photo'].setValue(image);
         });
