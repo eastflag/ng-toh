@@ -8,6 +8,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {AdminService} from './admin.service';
+import {ManageDialogComponent} from './manage-hero/manage-dialog.component';
+import {NgbModalModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
   {path: '', component: IndexComponent, children: [
@@ -22,9 +24,11 @@ const routes: Routes = [
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    NgbModule,
   ],
-  declarations: [IndexComponent, ManageHeroComponent, RegisterHeroComponent, DashboardComponent],
-  providers: [AdminService]
+  declarations: [IndexComponent, ManageHeroComponent, RegisterHeroComponent, DashboardComponent, ManageDialogComponent],
+  providers: [AdminService],
+  entryComponents: [ManageDialogComponent]
 })
 export class AdminModule { }

@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h4 class="modal-title">Hi there!</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p>{{name}}을(를) 삭제하시겠습니까?</p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-success" (click)="activeModal.close('Close click')">확인</button>
+  <button type="button" class="btn btn-warning" (click)="activeModal.close('Close click')">취소</button>
+</div>
