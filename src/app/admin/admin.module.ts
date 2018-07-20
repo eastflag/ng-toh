@@ -10,12 +10,14 @@ import {HttpClientModule} from '@angular/common/http';
 import {AdminService} from './admin.service';
 import {ManageDialogComponent} from './manage-hero/manage-dialog.component';
 import {NgbModalModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { CorrectHeroComponent } from './correct-hero/correct-hero.component';
 
 const routes: Routes = [
   {path: '', component: IndexComponent, children: [
       {path: '', component: DashboardComponent},
       {path: 'register', component: RegisterHeroComponent},
-      {path: 'manage', component: ManageHeroComponent}
+      {path: 'manage', component: ManageHeroComponent},
+      {path: 'correct/:hero_id', component: CorrectHeroComponent}
     ]}
 ];
 
@@ -27,7 +29,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     NgbModule,
   ],
-  declarations: [IndexComponent, ManageHeroComponent, RegisterHeroComponent, DashboardComponent, ManageDialogComponent],
+  declarations: [IndexComponent, ManageHeroComponent, RegisterHeroComponent, DashboardComponent, ManageDialogComponent, CorrectHeroComponent],
   providers: [AdminService],
   entryComponents: [ManageDialogComponent]
 })

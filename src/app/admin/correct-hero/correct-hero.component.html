@@ -1,0 +1,75 @@
+<h3>Hero Correction</h3>
+
+<form [formGroup]="form" (ngSubmit)="modify()">
+  <div class="form-group mt-1">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" placeholder="Enter Name" id="name" formControlName="name">
+    <div *ngIf="form.controls['name'].hasError('required') && form.controls['name'].touched" class="alert alert-danger">이름을 입력하세요.</div>
+    <div *ngIf="form.controls['name'].hasError('minlength') && form.controls['name'].touched" class="alert alert-danger">5자이상 입력하세요.</div>
+    <div *ngIf="form.controls['name'].hasError('maxlength') && form.controls['name'].touched" class="alert alert-danger">20자이하로 입력하세요.</div>
+  </div>
+
+  <div class="form-group mt-1">
+    <label for="email">Email Address</label>
+    <input type="email" class="form-control" placeholder="Enter Email" id="email" formControlName="email">
+    <div *ngIf="form.controls['email'].hasError('required') && form.controls['email'].touched" class="alert alert-danger">이메일을 입력하세요.</div>
+    <div *ngIf="form.controls['email'].hasError('email') && form.controls['email'].touched" class="alert alert-danger">유효한 이메일을 입력하세요.</div>
+  </div>
+
+  <div class="d-flex flex-column mt-1">
+    <div>성별</div>
+    <div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="sex" value="male" id="male" formControlName="sex">
+        <label class="form-check-label" for="male">남자</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="sex" value="female" id="female" formControlName="sex">
+        <label class="form-check-label" for="female">여자</label>
+      </div>
+      <div *ngIf="!form.controls['sex'].valid && form.controls['sex'].touched" class="alert alert-danger">성별을 선택하세요.</div>
+    </div>
+  </div>
+
+  <div class="form-group mt-1">
+    <label for="country">country</label>
+    <select class="form-control" id="country" formControlName="country">
+      <option value="Japan">Japan</option>
+      <option value="American">American</option>
+      <option value="Korean">Korean</option>
+    </select>
+    <div *ngIf="!form.controls['country'].valid && form.controls['country'].touched" class="alert alert-danger">국가를 선택하세요.</div>
+  </div>
+
+  <div class="form-group mt-1">
+    <label for="email">Address</label>
+    <textarea class="form-control" placeholder="Enter address" id="address" rows="3" formControlName="address"></textarea>
+  </div>
+
+  <div class="d-flex flex-column mt-1">
+    <div>power</div>
+    <div>
+      <div class="form-check" *ngFor="let p of powers; let i = index" formArrayName="power">
+        <input type="checkbox" class="form-check-input" [formControlName]="i">
+        <label class="form-check-label">{{p}}</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex flex-column mt-3">
+    <div>사진등록</div>
+    <div>
+      <input type="file" class="form-control-file border" (change)="fileUpload($event)" accept="image/*">
+    </div>
+    <div>
+      <img [src]="form.controls['photo'].value" *ngIf="form.controls['photo'].value">
+    </div>
+  </div>
+
+  <div class="m-3 d-flex justify-content-center">
+    <button type="submit" class="btn btn-outline-primary">등록</button>
+  </div>
+
+</form>
+
+<p>{{form.value | json}}</p>

@@ -12,7 +12,7 @@
     </td>
     <td class="flex-fill">{{hero.name}}</td>
     <td>
-      <button class="btn btn-info btn-sm">수정</button>
+      <button class="btn btn-info btn-sm" routerLink="/admin/correct/{{hero.hero_id}}">수정</button>
       <button class="btn btn-danger btn-sm ml-2" (click)="confirmDelete(hero)">삭제</button>
     </td>
   </tr>
