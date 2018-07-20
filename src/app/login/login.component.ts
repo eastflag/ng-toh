@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.member)
       .subscribe(result => {
         if (result) {
-          this.router.navigateByUrl('/');
           this.toaster.pop('success', 'success', '로그인하였습니다.');
         } else {
           this.toaster.pop('fail', 'fail', '로그인에 실패하였습니다.!!!');
