@@ -18,6 +18,7 @@ import { HighlightDirective } from './highlight.directive';
 import {ToasterModule} from 'angular2-toaster';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ManageDialogComponent } from './admin/manage-hero/manage-dialog.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
     ]},
   {path: 'jquery', component: JqueryComponent},
   {path: 'todo', component: TodoComponent},
+  {path: 'login', component: LoginComponent},
   {
     path: 'admin', loadChildren: './admin/admin.module#AdminModule',
   },
@@ -43,6 +45,7 @@ const routes: Routes = [
     JqueryComponent,
     MydatePipe,
     HighlightDirective,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
