@@ -1,3 +1,25 @@
-<p>
-  manage-hero works!
-</p>
+<h2>My Heroes</h2>
+
+<ul>
+  <li class="d-flex m-1" *ngFor="let hero of heroes">
+    <span class="rounded-left p-2 bg-primary text-light">{{hero.hero_id}}</span>
+    <div class="rounded-right p-2 bg-light text-dark w-50">{{hero.name}}</div>
+  </li>
+</ul>
+<table class="table table-striped">
+  <tr>
+    <th style="width: 20%;">사진</th>
+    <th style="width: 60%;">이름</th>
+    <th style="width: 20%;">수정</th>
+  </tr>
+  <tr *ngFor="let hero of heroes">
+    <td>
+      <img [src]="hero.photo" style="width: 5rem;" *ngIf="hero.photo">
+    </td>
+    <td class="flex-fill">{{hero.name}}</td>
+    <td>
+      <button class="btn btn-info btn-sm">수정</button>
+      <button class="btn btn-danger btn-sm ml-2">삭제</button>
+    </td>
+  </tr>
+</table>
