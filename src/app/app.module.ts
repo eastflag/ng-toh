@@ -22,13 +22,13 @@ import { LoginComponent } from './login/login.component';
 import {AuthGuardService} from './auth-guard.service';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'heroes', component: HeroesComponent, children: [
+  {path: '', component: HomeComponent, data: {state: 'home'} },
+  {path: 'heroes', component: HeroesComponent, data: {state: 'heroes'}, children: [
       {path: 'detail/:hero_id', component: HeroDetailComponent}
     ]},
-  {path: 'jquery', component: JqueryComponent},
-  {path: 'todo', component: TodoComponent},
-  {path: 'login', component: LoginComponent},
+  {path: 'jquery', component: JqueryComponent, data: {state: 'jquery'} },
+  {path: 'todo', component: TodoComponent, data: {state: 'todo'} },
+  {path: 'login', component: LoginComponent, data: {state: 'login'}},
   {
     path: 'admin', loadChildren: './admin/admin.module#AdminModule', canLoad: [AuthGuardService]
   },
