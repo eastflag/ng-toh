@@ -1,13 +1,13 @@
-//:host {
-//
-//  div.wrapper {
-//    position: relative;
-//  }
-//
-//  /deep/ router-outlet ~ * {
-//    position: absolute;
-//    width: 100%;
-//    height: 100%;
-//  }
-//
-//}
+:host {
+
+  div.container {
+    position: relative;
+    padding: 0;
+  }
+
+  ///deep/ router-outlet ~ * {
+  //  position: absolute;
+  //  width: 100%;
+  //  height: 100%;
+  //}
+}
