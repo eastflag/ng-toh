@@ -53,4 +53,9 @@
     </tr>
   </ng-template>
   </tbody>
+
+  <ngb-pagination class="d-flex justify-content-center"
+                  [collectionSize]="page.totalCount" [pageSize]="page.pageSize"
+                  [(page)]="page.pageIndex" (pageChange)="pageChanged($event)">
+  </ngb-pagination>
 </table>

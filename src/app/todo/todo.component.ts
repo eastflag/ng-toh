@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {TodoVo} from '../domain/todo.vo';
 import {HeroService} from '../hero.service';
 import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
+import {PageVo} from '../domain/page.vo';
 
 @Component({
   selector: 'app-todo',
@@ -31,6 +32,8 @@ export class TodoComponent implements OnInit {
   newTodo = new TodoVo();
   tempTodoList: Map<number, TodoVo> = new Map<number, TodoVo>();
 
+  page = new PageVo();
+
   constructor(private heroService: HeroService) { }
 
   ngOnInit() {
@@ -38,10 +41,20 @@ export class TodoComponent implements OnInit {
   }
 
   getTodoList() {
-    this.heroService.getTodoList()
+/*    this.heroService.getTodoList()
       .subscribe(body => {
         console.log('getTodoList', body);
         this.todoList = body;
+      });*/
+console.log(this.page);
+
+    let start_index = (this.page.pageIndex - 1) * this.page.pageSize;
+
+    this.heroService.getPagedTodoList(start_index, this.page.pageSize)
+      .subscribe(body => {
+        console.log('getTodoList', body);
+        this.todoList = body.data;
+        this.page.totalCount = body.total;
       });
   }
 
@@ -105,5 +118,13 @@ export class TodoComponent implements OnInit {
         // 편집상태에서 일반상태로 전환
         item.isEdited = false;
       });
+  }
+
+  pageChanged(e: any) {
+    // pageIndex가 넘어온다.
+    console.log(e);
+    console.log(event);
+    this.page.pageIndex = e;
+    this.getTodoList();
   }
 }
