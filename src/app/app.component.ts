@@ -4,7 +4,6 @@ import {AuthGuardService} from './auth-guard.service';
 import {fadeAnimation} from './animations/fade-animation';
 import {slideAnimation} from './animations/slide-animation';
 import {routeAnimation} from './animations/route-animation';
-import {PwaService} from './pwa.service';
 
 @Component({
   selector: 'app-root',
@@ -22,13 +21,9 @@ export class AppComponent {
       timeout: 2000
     });
 
-  constructor(public authService: AuthGuardService, public Pwa: PwaService) {}
+  constructor(public authService: AuthGuardService) {}
 
   getState(outlet: any) {
     return outlet.activatedRouteData['state'] || 'home';
-  }
-
-  installPwa(): void {
-    this.Pwa.promptEvent.prompt();
   }
 }

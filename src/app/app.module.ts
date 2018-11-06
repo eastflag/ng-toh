@@ -54,7 +54,7 @@ const routes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    NgbModule.forRoot(),
+    NgbModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
     ToasterModule.forRoot(),

@@ -7,8 +7,8 @@
 <ul>
   <li class="d-flex m-1" *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero===selectedHero"
     routerLink="/heroes/detail/{{hero.hero_id}}">
-    <span class="rounded-left p-2 bg-primary text-light">{{hero.hero_id}}</span>
-    <div class="rounded-right p-2 bg-light text-dark w-50">{{hero.name}}</div>
+    <span class="rounded-left p-2 bg-primary text-light text-center col-2 col-md-1">{{hero.hero_id}}</span>
+    <div class="rounded-right p-2 bg-light text-dark col-10 col-md-5">{{hero.name}}</div>
   </li>
 </ul>
 
