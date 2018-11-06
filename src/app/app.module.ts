@@ -20,6 +20,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ManageDialogComponent } from './admin/manage-hero/manage-dialog.component';
 import { LoginComponent } from './login/login.component';
 import {AuthGuardService} from './auth-guard.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, data: {state: 'home'} },
@@ -55,7 +57,8 @@ const routes: Routes = [
     NgbModule.forRoot(),
     RouterModule.forRoot(routes),
     HttpClientModule,
-    ToasterModule.forRoot()
+    ToasterModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

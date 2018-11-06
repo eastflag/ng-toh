@@ -31,3 +31,5 @@
 
 <toaster-container [toasterconfig]="config"></toaster-container>
 <!--<app-votetaker></app-votetaker>-->
+
+<button *ngIf="Pwa.promptEvent" (click)="installPwa()">Install</button>
