@@ -26,7 +26,7 @@ import { environment } from '../environments/environment';
 const routes: Routes = [
   {path: '', component: HomeComponent, data: {state: 'home'} },
   {path: 'heroes', component: HeroesComponent, data: {state: 'heroes'}, children: [
-      {path: 'detail/:hero_id', component: HeroDetailComponent}
+      {path: ':hero_id', component: HeroDetailComponent}
     ]},
   {path: 'jquery', component: JqueryComponent, data: {state: 'jquery'} },
   {path: 'todo', component: TodoComponent, data: {state: 'todo'} },
