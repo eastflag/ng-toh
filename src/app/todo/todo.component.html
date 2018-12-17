@@ -4,7 +4,7 @@
       <div class="form-group">
         <input type="text" class="form-control" placeholder="할일을 입력하세요." [(ngModel)]="newTodo.todo"
                name="todo" #todo="ngModel" required>
-        <div [hidden]="todo.valid" class="alert alert-danger">
+        <div [hidden]="!todo.touched || todo.valid" class="alert alert-danger">
           todo is required
         </div>
       </div>
