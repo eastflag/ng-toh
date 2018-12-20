@@ -10,42 +10,25 @@ export class AuthGuardService implements CanActivate, CanActivateChild, CanLoad 
 
   constructor(private router: Router) { }
 
-  login(member: MemberVo): Observable<boolean> {
-    if (member.email === 'admin@eastflag.co.kr' && member.password === '123456') {
-      // http로 서버에 로그인이 성공하면 토큰 정보를 받아와서 스토리지에 저장한다.
-      const token = 'abcdefg';
-      localStorage.setItem('token', token);
-      //
-      if (localStorage.getItem('redirect_url')) {
-        this.router.navigateByUrl(localStorage.getItem('redirect_url'));
-      } else {
-        this.router.navigateByUrl('/');
-      }
-      return of(true);
-    } else {
-      return of(false);
-    }
-  }
-
   logout() {
     localStorage.removeItem('token');
     this.router.navigateByUrl('/');
   }
 
   isLogIn() {
-    if (localStorage.getItem('token')) {
-      return true;
-    } else {
+    const token = localStorage.getItem('token');
+    if (!token) {
       return false;
     }
-  }
+    // jwt 토큰 유효성 검증
+    var base64Url = token.split('.')[1]; // head + payload + signature
+    var base64 = base64Url.replace('-', '+').replace('_', '/');
+    const payload = JSON.parse(window.atob(base64));
+    console.log(payload);
 
-  checkLogin(url: string) {
-    if (localStorage.getItem('token')) {
+    if (payload.exp - new Date().getTime() / 1000 > 0 ) {
       return true;
     } else {
-      localStorage.setItem('redirect_url', url);
-      this.router.navigateByUrl('login');
       return false;
     }
   }
@@ -61,6 +44,12 @@ export class AuthGuardService implements CanActivate, CanActivateChild, CanLoad 
   canLoad(route: Route): Observable<boolean> | Promise<boolean> | boolean {
     let url = `/${route.path}`;
     console.log(url);
-    return this.checkLogin(url);
+    if (this.isLogIn()) {
+      return true;
+    } else {
+      localStorage.setItem('redirect_url', url);
+      this.router.navigateByUrl('login');
+      return false;
+    }
   }
 }

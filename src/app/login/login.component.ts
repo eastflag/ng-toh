@@ -3,6 +3,7 @@ import {MemberVo} from '../domain/member.vo';
 import {AuthGuardService} from '../auth-guard.service';
 import {Router} from '@angular/router';
 import {ToasterService} from 'angular2-toaster';
+import {HeroService} from '../hero.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import {ToasterService} from 'angular2-toaster';
 export class LoginComponent implements OnInit {
   member = new MemberVo();
 
-  constructor(private authService: AuthGuardService, private router: Router, private toaster: ToasterService) {
+  constructor(private router: Router, private toaster: ToasterService, private heroService: HeroService) {
     this.member.email = 'admin@eastflag.co.kr';
     this.member.password = '123456';
   }
@@ -22,9 +23,18 @@ export class LoginComponent implements OnInit {
 
   login() {
     console.log('login');
-    this.authService.login(this.member)
-      .subscribe(result => {
-        if (result) {
+    this.heroService.login(this.member)
+      .subscribe(body => {
+        console.log(body);
+        if (body.result === 0) {
+          localStorage.setItem('token', body.data['token']);
+          //
+          if (localStorage.getItem('redirect_url')) {
+            this.router.navigateByUrl(localStorage.getItem('redirect_url'));
+          } else {
+            this.router.navigateByUrl('/');
+          }
+
           this.toaster.pop('success', 'success', '로그인하였습니다.');
         } else {
           this.toaster.pop('fail', 'fail', '로그인에 실패하였습니다.!!!');
