@@ -21,8 +21,8 @@ export class AuthGuardService implements CanActivate, CanActivateChild, CanLoad 
       return false;
     }
     // jwt 토큰 유효성 검증
-    var base64Url = token.split('.')[1]; // head + payload + signature
-    var base64 = base64Url.replace('-', '+').replace('_', '/');
+    let base64Url = token.split('.')[1]; // head + payload + signature
+    let base64 = base64Url.replace('-', '+').replace('_', '/');
     const payload = JSON.parse(window.atob(base64));
     console.log(payload);
 
